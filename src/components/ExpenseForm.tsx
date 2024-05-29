@@ -24,7 +24,7 @@ const ExpenseForm = () => {
   
 
   return (
-    <form onSubmit={handleSubmit((e) => console.log(e))}>
+    <form onSubmit={handleSubmit()}>
       <div id="description-field" className="mb-3">
         <label htmlFor="description">description</label>
         <input {...register("description")} id="description" type="text" className="form-control" />

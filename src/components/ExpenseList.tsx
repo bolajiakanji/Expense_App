@@ -7,12 +7,14 @@ interface Expense {
     amount: number;
     category: "Groceries" | "Entertainment" | "Utilities";
 }
+ 
+interface ExpenseProp {
+    expenses: Expense[],
+    onDelete: (id:number) => void
+}
 
-const ExpenseList = () => {
-    const [expenses, setExpenses] = useState<Expense[]>([
-        { id: 1, description: "tomatoes", amount: 10, category: "Utilities"}
 
-    ])
+const ExpenseList = ({ expenses, onDelete}: ExpenseProp) => {
     
     
   return (
@@ -31,7 +33,7 @@ const ExpenseList = () => {
                     <td>{expense.description}</td>
                     <td>{expense.amount}</td>
                     <td>{expense.category}</td>
-                    <td><button className='btn btn-danger text-white'>Button</button></td>
+                    <td><button className='btn btn-outline-danger' onClick={() => onDelete(expense.id)} >Button</button></td>
                 </tr>
                 
             )}
