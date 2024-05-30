@@ -16,11 +16,11 @@ interface expensenoid {
 }
 function App() {
   const [expenses, setExpenses] = useState<Expense[]>([
-    { id: 1, description: "tomatoes", amount: 10, category: "Utilities" },
-    { id: 2, description: "pepper", amount: 18, category: "Utilities" },
+    { id: 1, description: "tomatoes", amount: 10, category: "Entertainment" },
+    { id: 2, description: "pepper", amount: 18, category: "Groceries" },
     { id: 3, description: "pepper", amount: 18, category: "Utilities" },
   ]);
-
+  const [visible, setvisible] = useState("");
   const handleDelete = (data: number) => {
     setExpenses(expenses.filter((expense) => expense.id !== data));
   };
@@ -28,7 +28,14 @@ function App() {
   const handleSubmit = (data: expensenoid) => {
     setExpenses([...expenses, { ...data, id: expenses.length + 1 }]);
   };
-
+  const handleSelectCategory = (e: string) => {
+    console.log(e);
+    setvisible(e);
+  };
+  const visex: Expense[] = !visible
+    ? expenses
+    : expenses.filter((expense) => expense.category == visible);
+  console.log(visex);
   return (
     <div className="m-5">
       <div className="mb-3">
@@ -37,7 +44,11 @@ function App() {
 
       {expenses.length && (
         <div className="mt-5">
-          <ExpenseList expenses={expenses} onDelete={handleDelete} />
+          <ExpenseList
+            expenses={visex}
+            onDelete={handleDelete}
+            onSelectCategory={handleSelectCategory}
+          />
         </div>
       )}
     </div>
