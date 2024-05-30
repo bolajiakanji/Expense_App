@@ -12,10 +12,18 @@ interface ExpenseProp {
     expenses: Expense[],
     onDelete: (id:number) => void
 }
+interface TotalExpenseType {
+    totalExpense: (Expenses: Expense[]) => number
+}
 
 
 const ExpenseList = ({ expenses, onDelete}: ExpenseProp) => {
-    
+ const totalExpeense = (expenses: Expense[]):number => {
+   return expenses.reduce((acc, expense) => {
+        return acc + expense.amount
+
+    }, 0)
+ } 
     
   return (
     <div>
@@ -37,6 +45,11 @@ const ExpenseList = ({ expenses, onDelete}: ExpenseProp) => {
                 </tr>
                 
             )}
+            <tr>
+                <td>Total</td>
+                <td>{totalExpeense(expenses)}</td>
+            </tr>
+
 </tbody>
         </table>
     </div>
