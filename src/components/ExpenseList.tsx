@@ -1,5 +1,4 @@
-import React, { useState } from 'react'
-import categories from './categories'
+
 
 interface Expense {
     id: number;
@@ -13,9 +12,7 @@ interface ExpenseProp {
     onDelete: (id:number) => void
     onSelectCategory: (e: string) => void
 }
-interface TotalExpenseType {
-    totalExpense: (Expenses: Expense[]) => number
-}
+
 
 
 const ExpenseList = ({ expenses, onDelete, onSelectCategory}: ExpenseProp) => {
