@@ -13,12 +13,13 @@ interface Expense {
 }
 
 const schema = z.object({
-  description: z.string({ }).min(4, { message: "Description is required" }).max(50),
+  description: z.string().min(1),
   amount: z.number({ invalid_type_error: "Amount is required"}).min(0.01).max(100_000),
   category: z.enum(categories, {
     errorMap: () => ({ message: "Category is required" })
   }),
 });
+
 
 type ExpenseFormData = z.infer<typeof schema>;
 interface OnSubmitProp {

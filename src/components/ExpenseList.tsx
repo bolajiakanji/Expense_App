@@ -34,7 +34,7 @@ const ExpenseList = ({ expenses, onDelete, onSelectCategory}: ExpenseProp) => {
             <option value="Groceries">Groceries</option>
             <option value="Entertainment">Entertainment</option>
         </select>
-        <table className='table table-bodered-none'>
+        <table className='table table-bordered text-center'>
             <thead>
                 <tr>
                     <th>Description</th>
